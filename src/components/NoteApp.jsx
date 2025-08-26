@@ -3,6 +3,8 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 
 import {
   Search,
@@ -315,10 +317,14 @@ const App = () => {
 //   }, 1600);
 // };
 
-  const handleLogout = () => {
+ const handleLogout = () => {
+  const navigate = useNavigate();
+
+  // Clear user session
   localStorage.removeItem("token");
   localStorage.removeItem("user");
 
+  // Show confirmation popup
   Swal.fire({
     icon: "success",
     title: "Logged out 👋",
@@ -329,8 +335,9 @@ const App = () => {
     customClass: { popup: 'transparent-swal' }
   });
 
+  // Redirect to login page after popup finishes
   setTimeout(() => {
-    window.location.href = "/login"; // or use navigate("/login") if using React Router
+    navigate("/login");
   }, 1600);
 };
 
