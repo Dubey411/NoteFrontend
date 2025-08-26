@@ -291,27 +291,46 @@ const App = () => {
   //   }, 1500);
   // };
 
+//   const handleLogout = () => {
+//   // Clear localStorage
+//   localStorage.removeItem("token");
+//   localStorage.removeItem("user");
+
+//   // Show nice popup
+//   Swal.fire({
+//     icon: "success",
+//     title: "Logged out 👋",
+//     text: "You have been logged out successfully!",
+//     showConfirmButton: false,
+//     timer: 1500,
+//       backdrop: `rgba(0,0,0,0.4)`, // keeps dim background
+//   customClass: {
+//     popup: 'transparent-swal'
+//   }
+//   });
+
+//   // Redirect to login after popup
+//   setTimeout(() => {
+//     window.location.href = "/"; // or use navigate("/login") if using React Router
+//   }, 1600);
+// };
+
   const handleLogout = () => {
-  // Clear localStorage
   localStorage.removeItem("token");
   localStorage.removeItem("user");
 
-  // Show nice popup
   Swal.fire({
     icon: "success",
     title: "Logged out 👋",
     text: "You have been logged out successfully!",
     showConfirmButton: false,
     timer: 1500,
-      backdrop: `rgba(0,0,0,0.4)`, // keeps dim background
-  customClass: {
-    popup: 'transparent-swal'
-  }
+    backdrop: `rgba(0,0,0,0.4)`,
+    customClass: { popup: 'transparent-swal' }
   });
 
-  // Redirect to login after popup
   setTimeout(() => {
-    window.location.href = "/"; // or use navigate("/login") if using React Router
+    window.location.href = "/login"; // or use navigate("/login") if using React Router
   }, 1600);
 };
 
