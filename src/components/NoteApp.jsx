@@ -329,7 +329,7 @@ const App = () => {
       setIsLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/notes",
+        "https://notebackend-4zqx.onrender.com/api/notes",
         {
           title: newNote.title.trim() || "Untitled Masterpiece",
           content: newNote.content.trim(),
