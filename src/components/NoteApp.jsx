@@ -311,7 +311,7 @@ const App = () => {
 
   // Redirect to login after popup
   setTimeout(() => {
-    window.location.href = "https://notebackend-4zqx.onrender.com/api/login"; // or use navigate("/login") if using React Router
+    window.location.href = "https://notebackend-4zqx.onrender.com"; // or use navigate("/login") if using React Router
   }, 1600);
 };
 
