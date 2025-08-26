@@ -183,7 +183,7 @@ const App = () => {
           return;
         }
 
-        const res = await axios.get("http://localhost:5000/api/notes", {
+        const res = await axios.get("https://notebackend-4zqx.onrender.com/api/notes", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -373,7 +373,7 @@ const App = () => {
   const handleDeleteNote = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/notes/${id}`, {
+      await axios.delete(`https://notebackend-4zqx.onrender.com/api/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -402,7 +402,7 @@ const App = () => {
         setIsLoading(true);
 
         const res = await axios.put(
-          `http://localhost:5000/api/notes/${editingNote._id}`,
+          `https://notebackend-4zqx.onrender.com/api/notes/${editingNote._id}`,
           editingNote,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -430,7 +430,7 @@ const App = () => {
       const token = localStorage.getItem("token");
       const note = notes.find((n) => n._id === id);
       const res = await axios.put(
-        `http://localhost:5000/api/notes/${id}`,
+        `https://notebackend-4zqx.onrender.com/api/notes/${id}`,
         { ...note, starred: !note.starred },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -447,7 +447,7 @@ const App = () => {
       const token = localStorage.getItem("token");
       const note = notes.find((n) => n._id === id);
       const res = await axios.put(
-        `http://localhost:5000/api/notes/${id}`,
+        `https://notebackend-4zqx.onrender.com/api/notes/${id}`,
         { ...note, archived: !note.archived },
         { headers: { Authorization: `Bearer ${token}` } }
       );
