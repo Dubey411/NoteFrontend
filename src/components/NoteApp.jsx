@@ -311,7 +311,7 @@ const App = () => {
 
   // Redirect to login after popup
   setTimeout(() => {
-    window.location.href = "https://note-frontend-psi.vercel.app/"; // or use navigate("/login") if using React Router
+    window.location.href = "/"; // or use navigate("/login") if using React Router
   }, 1600);
 };
 
