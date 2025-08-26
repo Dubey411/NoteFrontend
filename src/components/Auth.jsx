@@ -72,7 +72,7 @@ const AuthApp = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/message")
+      .get("https://notebackend-4zqx.onrender.com/api/message")
       .then((response) => setData(response.data.message))
       .catch((error) => console.error("Error:", error));
   }, []);
@@ -183,8 +183,8 @@ const AuthApp = () => {
   setIsLoading(true);
 
   const endpoint = isLogin
-    ? "http://localhost:5000/api/auth/login"
-    : "http://localhost:5000/api/auth/signup";
+    ? "https://notebackend-4zqx.onrender.com/api/auth/login"
+    : "https://notebackend-4zqx.onrender.com/api/auth/signup";
 
   const payload = isLogin
     ? { email: formData.email, password: formData.password }
