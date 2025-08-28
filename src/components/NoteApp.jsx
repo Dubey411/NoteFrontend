@@ -317,29 +317,28 @@ const App = () => {
 //   }, 1600);
 // };
 
- const handleLogout = () => {
-  const navigate = useNavigate();
+  const handleLogout = () => {
+    // Clear user session
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
 
-  // Clear user session
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
+    // Show confirmation popup
+    Swal.fire({
+      icon: "success",
+      title: "Logged out 👋",
+      text: "You have been logged out successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+      backdrop: `rgba(0,0,0,0.4)`,
+      customClass: { popup: 'transparent-swal' }
+    });
 
-  // Show confirmation popup
-  Swal.fire({
-    icon: "success",
-    title: "Logged out 👋",
-    text: "You have been logged out successfully!",
-    showConfirmButton: false,
-    timer: 1500,
-    backdrop: `rgba(0,0,0,0.4)`,
-    customClass: { popup: 'transparent-swal' }
-  });
+    // Redirect to login page after popup finishes
+    setTimeout(() => {
+      navigate("/login");
+    }, 1600);
+  };
 
-  // Redirect to login page after popup finishes
-  setTimeout(() => {
-    navigate("/login");
-  }, 1600);
-};
 
   const handleCreateNote = async () => {
     if (!newNote.title.trim() && !newNote.content.trim()) return;
