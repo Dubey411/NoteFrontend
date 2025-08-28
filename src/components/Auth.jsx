@@ -26,7 +26,7 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
  import Swal from "sweetalert2";
-import { useGoogleLogin } from "@react-oauth/google";
+
 
 
 const AuthApp = () => {
@@ -229,42 +229,18 @@ const AuthApp = () => {
   }
 };
 
- const googleLogin = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      try {
-        // Send Google token to backend
-        const res = await axios.post("https://notebackend-4zqx.onrender.com/api/auth/google-login", {
-          token: tokenResponse.access_token,
-        });
 
-        // ✅ Backend returns JWT
-        const { token, user } = res.data;
-
-        // Store in localStorage (or context)
-        localStorage.setItem("token", token);
-
-        // 🎉 Do your celebration
-        triggerConfetti();
-        alert(`Welcome ${user.name}, logged in with Google!`);
-
-      } catch (error) {
-        console.error("Google login error:", error);
-        alert("Google authentication failed ❌");
-      }
-    },
-    onError: () => alert("Google authentication failed ❌"),
-  });
 
   const handleSocialAuth = (provider) => {
-    if (provider === "Google") {
-      googleLogin(); // actually start Google OAuth flow
-    }
-    // setIsLoading(true);
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    //   triggerConfetti();
-    //   alert(`${provider} authentication successful! 🎉`);
-    // }, 1500);
+    // if (provider === "Google") {
+    //   googleLogin(); // actually start Google OAuth flow
+    // }
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      triggerConfetti();
+      alert(`${provider} authentication successful! 🎉`);
+    }, 1500);
   };
 
   const resetForm = () => {
