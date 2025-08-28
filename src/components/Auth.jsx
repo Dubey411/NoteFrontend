@@ -487,7 +487,7 @@ const AuthApp = () => {
             </div>
 
             {/* Social Auth */}
-            <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+{/*             <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
               <button
                 onClick={() => handleSocialAuth("Google")}
                 disabled={isLoading}
@@ -527,7 +527,17 @@ const AuthApp = () => {
                   <span className="hidden sm:inline">Apple</span>
                 </button>
               </div>
-            </div>
+            </div> */}
+
+            <div className="text-center p-4 rounded-xl bg-white/30 backdrop-blur-sm">
+  <div className="flex justify-center mb-2">
+    {[...Array(5)].map((_, i) => (
+      <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />
+    ))}
+  </div>
+  <p className="text-sm italic">"Best note-taking app I've ever used!"</p>
+  <p className="text-xs text-gray-500 mt-1">- Sarah K.</p>
+</div>
 
             {/* Divider */}
             <div className="relative mb-6 sm:mb-8">
