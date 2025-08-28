@@ -26,6 +26,7 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
  import Swal from "sweetalert2";
+import { useGoogleLogin } from "@react-oauth/google";
 
 
 const AuthApp = () => {
@@ -228,50 +229,42 @@ const AuthApp = () => {
   }
 };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (!validateForm()) return;
+ const googleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        // Send Google token to backend
+        const res = await axios.post("http://localhost:5000/auth/google-login", {
+          token: tokenResponse.access_token,
+        });
 
-  //   setIsLoading(true);
+        // ✅ Backend returns JWT
+        const { token, user } = res.data;
 
-  //   const endpoint = isLogin
-  //     ? "http://localhost:5000/api/auth/login"
-  //     : "http://localhost:5000/api/auth/signup";
+        // Store in localStorage (or context)
+        localStorage.setItem("token", token);
 
-  //   const payload = isLogin
-  //     ? { email: formData.email, password: formData.password }
-  //     : {
-  //         name: `${formData.firstName} ${formData.lastName}`,
-  //         email: formData.email,
-  //         password: formData.password,
-  //       };
+        // 🎉 Do your celebration
+        triggerConfetti();
+        alert(`Welcome ${user.name}, logged in with Google!`);
 
-  //   try {
-  //     const res = await axios.post(endpoint, payload);
-  //     const { token, user } = res.data;
-
-  //     localStorage.setItem("token", token);
-  //     localStorage.setItem("user", JSON.stringify(user));
-
-  //     triggerConfetti();
-  //     alert(
-  //       isLogin ? "Login successful! 🎉" : "Account created successfully! 🎉"
-  //     );
-  //     navigate("/Note");
-  //   } catch (err) {
-  //     alert(err.response?.data?.msg || "Something went wrong!");
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+      } catch (error) {
+        console.error("Google login error:", error);
+        alert("Google authentication failed ❌");
+      }
+    },
+    onError: () => alert("Google authentication failed ❌"),
+  });
 
   const handleSocialAuth = (provider) => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      triggerConfetti();
-      alert(`${provider} authentication successful! 🎉`);
-    }, 1500);
+    if (provider === "Google") {
+      googleLogin(); // actually start Google OAuth flow
+    }
+    // setIsLoading(true);
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    //   triggerConfetti();
+    //   alert(`${provider} authentication successful! 🎉`);
+    // }, 1500);
   };
 
   const resetForm = () => {
