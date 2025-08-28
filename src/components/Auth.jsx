@@ -529,17 +529,64 @@ const AuthApp = () => {
               </div>
             </div> */}
 
-         <div className="relative">
-  <div className="absolute inset-0 flex items-center">
-    <div className="w-full border-t border-gray-200/50"></div>
-  </div>
-  <div className="relative flex justify-center text-sm">
-    <span className="px-4 bg-white/40 text-gray-500 backdrop-blur-sm rounded-lg">
-      Start your journey
-    </span>
-  </div>
-</div>
-
+           {/* Note Categories Section */}
+            <div className="mb-6 sm:mb-8">
+              <div className={`p-4 sm:p-6 rounded-xl ${
+                darkMode ? "bg-gray-700/30" : "bg-white/30"
+              } backdrop-blur-sm border ${
+                darkMode ? "border-gray-600/30" : "border-white/30"
+              }`}>
+                <h3 className={`text-center text-lg sm:text-xl font-bold mb-4 ${
+                  darkMode ? "text-white" : "text-gray-800"
+                }`}>
+                  Organize Your Life
+                </h3>
+                
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                  <div className={`p-3 rounded-lg text-center transition-all duration-300 hover:scale-105 ${
+                    darkMode ? "bg-blue-500/20 hover:bg-blue-500/30" : "bg-blue-100/60 hover:bg-blue-200/60"
+                  }`}>
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <span className="text-white text-sm font-bold">📚</span>
+                    </div>
+                    <p className={`text-xs font-medium ${darkMode ? "text-blue-300" : "text-blue-700"}`}>
+                      Study Notes
+                    </p>
+                  </div>
+                  
+                  <div className={`p-3 rounded-lg text-center transition-all duration-300 hover:scale-105 ${
+                    darkMode ? "bg-pink-500/20 hover:bg-pink-500/30" : "bg-pink-100/60 hover:bg-pink-200/60"
+                  }`}>
+                    <div className="w-8 h-8 bg-gradient-to-r from-pink-400 to-pink-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <span className="text-white text-sm font-bold">💝</span>
+                    </div>
+                    <p className={`text-xs font-medium ${darkMode ? "text-pink-300" : "text-pink-700"}`}>
+                      Love Letters
+                    </p>
+                  </div>
+                  
+                  <div className={`p-3 rounded-lg text-center transition-all duration-300 hover:scale-105 ${
+                    darkMode ? "bg-green-500/20 hover:bg-green-500/30" : "bg-green-100/60 hover:bg-green-200/60"
+                  }`}>
+                    <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-green-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <span className="text-white text-sm font-bold">🌱</span>
+                    </div>
+                    <p className={`text-xs font-medium ${darkMode ? "text-green-300" : "text-green-700"}`}>
+                      Life Lessons
+                    </p>
+                  </div>
+                  
+                  <div className={`p-3 rounded-lg text-center transition-all duration-300 hover:scale-105 ${
+                    darkMode ? "bg-purple-500/20 hover:bg-purple-500/30" : "bg-purple-100/60 hover:bg-purple-200/60"
+                  }`}>
+                    <div className="w-8 h-8 bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-2">
+                      <span className="text-white text-sm font-bold">💭</span>
+                    </div>
+                    <p className={`text-xs font-medium ${darkMode ? "text-purple-300" : "text-purple-700"}`}>
+                      Thoughts
+                    </p>
+                  </div>
+                </div>
             {/* Divider */}
             <div className="relative mb-6 sm:mb-8">
               <div className={`absolute inset-0 flex items-center`}>
