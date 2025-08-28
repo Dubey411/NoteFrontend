@@ -295,12 +295,12 @@ const App = () => {
   // };
 
 
- const handleLogout = () => {
-    // Clear user session
+  const handleLogout = () => {
+    // Clear localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    // Show confirmation popup
+    // Show logout popup
     Swal.fire({
       icon: "success",
       title: "Logged out 👋",
@@ -308,13 +308,11 @@ const App = () => {
       showConfirmButton: false,
       timer: 1500,
       backdrop: `rgba(0,0,0,0.4)`,
-      customClass: { popup: 'transparent-swal' }
+      customClass: { popup: 'transparent-swal' },
     });
 
-    // Redirect to login page after popup finishes
-    setTimeout(() => {
-      navigate("/login");
-    }, 1600);
+    // Redirect after popup
+    setTimeout(() => navigate("/login"), 1600);
   };
 
 
