@@ -71,6 +71,7 @@ const App = () => {
   const typingTimeoutRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const colors = [
     {
@@ -295,28 +296,26 @@ const App = () => {
 
 
  const handleLogout = () => {
-  const navigate = useNavigate();
+    // Clear user session
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
 
-  // Clear user session
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
+    // Show confirmation popup
+    Swal.fire({
+      icon: "success",
+      title: "Logged out 👋",
+      text: "You have been logged out successfully!",
+      showConfirmButton: false,
+      timer: 1500,
+      backdrop: `rgba(0,0,0,0.4)`,
+      customClass: { popup: 'transparent-swal' }
+    });
 
-  // Show confirmation popup
-  Swal.fire({
-    icon: "success",
-    title: "Logged out 👋",
-    text: "You have been logged out successfully!",
-    showConfirmButton: false,
-    timer: 1500,
-    backdrop: `rgba(0,0,0,0.4)`,
-    customClass: { popup: 'transparent-swal' }
-  });
-
-  // Redirect to login page after popup finishes
-  setTimeout(() => {
-    navigate("/login");
-  }, 1600);
-};
+    // Redirect to login page after popup finishes
+    setTimeout(() => {
+      navigate("/login");
+    }, 1600);
+  };
 
 
   const handleCreateNote = async () => {
