@@ -282,62 +282,39 @@ const App = () => {
     setDarkMode((prevMode) => !prevMode);
   };
 
-  // const handleLogout = () => {
-  //   // Clear localStorage
-  //   localStorage.removeItem("token");
-  //   // Show success message
-  //   toast.success("👋 Logged out successfully!");
-  //   // Redirect to login page after a short delay
-  //   setTimeout(() => {
-  //     window.location.href = "/login"; // or use React Router navigation
-  //   }, 1500);
-  // };
-
-//   const handleLogout = () => {
-//   // Clear localStorage
-//   localStorage.removeItem("token");
-//   localStorage.removeItem("user");
-
-//   // Show nice popup
-//   Swal.fire({
-//     icon: "success",
-//     title: "Logged out 👋",
-//     text: "You have been logged out successfully!",
-//     showConfirmButton: false,
-//     timer: 1500,
-//       backdrop: `rgba(0,0,0,0.4)`, // keeps dim background
-//   customClass: {
-//     popup: 'transparent-swal'
-//   }
-//   });
-
-//   // Redirect to login after popup
-//   setTimeout(() => {
-//     window.location.href = "/"; // or use navigate("/login") if using React Router
-//   }, 1600);
-// };
-
   const handleLogout = () => {
-    // Clear user session
+    // Clear localStorage
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
-
-    // Show confirmation popup
-    Swal.fire({
-      icon: "success",
-      title: "Logged out 👋",
-      text: "You have been logged out successfully!",
-      showConfirmButton: false,
-      timer: 1500,
-      backdrop: `rgba(0,0,0,0.4)`,
-      customClass: { popup: 'transparent-swal' }
-    });
-
-    // Redirect to login page after popup finishes
+    // Show success message
+    toast.success("👋 Logged out successfully!");
+    // Redirect to login page after a short delay
     setTimeout(() => {
-      navigate("/login");
-    }, 1600);
+      window.location.href = "/login"; // or use React Router navigation
+    }, 1500);
   };
+
+
+  // const handleLogout = () => {
+  //   // Clear user session
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user");
+
+  //   // Show confirmation popup
+  //   Swal.fire({
+  //     icon: "success",
+  //     title: "Logged out 👋",
+  //     text: "You have been logged out successfully!",
+  //     showConfirmButton: false,
+  //     timer: 1500,
+  //     backdrop: `rgba(0,0,0,0.4)`,
+  //     customClass: { popup: 'transparent-swal' }
+  //   });
+
+  //   // Redirect to login page after popup finishes
+  //   setTimeout(() => {
+  //     navigate("/login");
+  //   }, 1600);
+  // };
 
 
   const handleCreateNote = async () => {
