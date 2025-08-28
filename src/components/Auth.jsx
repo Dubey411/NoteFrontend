@@ -233,7 +233,7 @@ const AuthApp = () => {
     onSuccess: async (tokenResponse) => {
       try {
         // Send Google token to backend
-        const res = await axios.post("http://localhost:5000/auth/google-login", {
+        const res = await axios.post("https://notebackend-4zqx.onrender.com/api/auth/google-login", {
           token: tokenResponse.access_token,
         });
 
