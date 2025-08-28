@@ -529,14 +529,15 @@ const AuthApp = () => {
               </div>
             </div> */}
 
-            <div className="text-center p-4 rounded-xl bg-white/30 backdrop-blur-sm">
-  <div className="flex justify-center mb-2">
-    {[...Array(5)].map((_, i) => (
-      <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />
-    ))}
+         <div className="relative">
+  <div className="absolute inset-0 flex items-center">
+    <div className="w-full border-t border-gray-200/50"></div>
   </div>
-  <p className="text-sm italic">"Best note-taking app I've ever used!"</p>
-  <p className="text-xs text-gray-500 mt-1">- Sarah K.</p>
+  <div className="relative flex justify-center text-sm">
+    <span className="px-4 bg-white/40 text-gray-500 backdrop-blur-sm rounded-lg">
+      Start your journey
+    </span>
+  </div>
 </div>
 
             {/* Divider */}
